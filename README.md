@@ -1,4 +1,4 @@
-# Installation du scrapper books
+# Installation du litreview project
 ## Cloner le repo github en local
 
 Lancer dans le terminal:
