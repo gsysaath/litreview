@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load classname %}
+{% load check_review_exist %}
+
+{% block title %}Feed{% endblock title %}
+{% block feed %}active{% endblock feed %}
+
+{% block content %}
+<div class="d-flex justify-content-center feed-div-buttons">
+    <a href="{% url 'reviews_tickets:review-create' %}" class="btn btn-outline-success margin-20">Create a review</a>
+    <a href="{% url 'reviews_tickets:ticket-create' %}" class="btn btn-outline-success margin-20">Ask for a review</a>
+</div>
+{% for obj in object_list %}
+{% if obj|classname == 'Ticket' %}
+    {% include 'reviews_tickets/_ticket_modal.html' %}
+{% elif obj|classname == 'Review' %}
+    {% include 'reviews_tickets/_review_modal.html' %}
+{% endif %}
+{% endfor %}
+{% endblock content %}

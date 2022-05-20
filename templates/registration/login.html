@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="d-flex w-100 login-div">
+    <div id="login-left" class="d-flex justify-content-center flex-column w-50">
+        <p class="text-center">Register now</p>
+        <div class="text-center">
+            <a href="{% url 'users:register' %}" class="btn btn-outline-success w-50">Register</a>
+        </div>
+    </div>
+    <div id="login-right" class="d-flex justify-content-center flex-column w-50">
+        <p class="text-center">Login</p>
+        {{ form.non_field_errors }}
+        {{ form.username.errors }}
+        {{ form.password.errors }}
+        <form method="post">
+            {% csrf_token %}
+            <p class="text-center">
+                <label for="id_username">Username:</label>
+                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            </p>
+            <p class="text-center">
+                <label for="id_password">Password:</label>
+                <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+            </p>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-success w-50 text-center">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

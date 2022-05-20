@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %} 
+
+{% block follows %}active{% endblock follows %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="text-center my-3 py-3 border">
+        <h2>Follow new users</h1>
+        <form action="{% url 'users:add-follower' %}" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit" class="my-3">
+        </form>
+
+    </div>
+    
+    <div class="text-center my-3 border py-3">
+        <h2>Following</h2>
+        {% for following_user in following %}
+        <div class="d-flex justify-content-between py-3 my-1 px-3 mx-3">
+            <div>
+                <p>{{following_user.user.username}}</p>
+            </div>
+            <div>
+                <a href="{% url 'users:delete-follower' user_id=following_user.user.id %}" class="btn btn-danger">Unfollow</a>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    
+    <div class="text-center my-3 border py-3">
+        <h2>Followed by</h2>
+        {% for f_user in followed_by %}
+        <div class="d-flex justify-content-between py-3 my-1 px-3 mx-3">
+            <div>
+                <p>{{f_user.followed_user.username}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

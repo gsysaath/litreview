@@ -1,0 +1,37 @@
+{% load show_star %}
+<div class="border px-3 py-3 card">
+    <div>
+        <p>{{ obj.user.username}} posted a review</p>
+    </div>
+    <div>
+        <p><strong>{{ obj.headline }}</strong> - <span class="star-span">{{obj|show_star}}</span></p>
+    </div>
+    <div>
+        <p>{{obj.body}}</p>
+    </div>
+    <div class="border px-3 py-3 review-modal-style">
+        <div class="d-flex w-100 justify-content-between">
+            <div>
+                <p>{{obj.ticket.user.username}} request a review</p>
+            </div>
+            <div>
+                <p>{{obj.ticket.time_created}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <p>
+                {{obj.ticket.title}}
+            </p>
+        </div>
+        <div>
+            <p>
+                <br>{{obj.ticket.description}}
+            </p>
+        </div>
+        {% if obj.ticket.image %}
+        <div>
+            <img src="{{obj.ticket.image.url}}" alt="" class="img-style">
+        </div>
+        {% endif %}
+    </div>
+</div>

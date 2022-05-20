@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Create new Review with Ticket{% endblock %}
+{% block feed %}active{% endblock feed %}
+
+{% block content %}
+
+<form method="post" action="{% url 'reviews_tickets:review-create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2>Create a ticket</h2>
+    {{ ticket_form| crispy }}
+    <br>
+    <hr>
+    <h2>Create a review</h2>
+    {{ review_form|crispy }}
+    <button type="submit" class="btn btn-outline-success w-50 text-center mt-5">Create Review</button>
+</form>
+{% endblock content %}
+

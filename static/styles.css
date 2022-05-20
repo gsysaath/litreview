@@ -1,0 +1,44 @@
+/* login */
+
+.login-div {
+    height: 80vh;
+}
+
+.card {
+    max-width: 600px; 
+    margin: 40px auto;
+}
+
+.feed-div-buttons {
+    width: 600px; 
+    margin: 20px auto;
+}
+
+.margin-20 {
+    margin: 20px;
+}
+
+.review-img {
+    width: 130px;
+    height: 200px; 
+}
+
+.star-span {
+    color: #F0E68C; 
+    font-size:20px;
+}
+
+.review-modal-style {
+    max-width: 567;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.img-style {
+    height: 200px; 
+    width: 130px;
+}
+
+.t-right {
+    text-align: right;
+}

@@ -1,0 +1,34 @@
+{% load check_review_exist %}
+
+<div class="border px-3 py-3 card">
+    <div class="d-flex w-100 justify-content-between">
+        <div>
+            <p>{{obj.user.username}} request a review</p>
+        </div>
+        <div>
+            <p>{{obj.time_created}}</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <p>
+            {{obj.title}}
+        </p>
+    </div>
+    <div>
+        <p>
+            <br>{{obj.description}}
+        </p>
+    </div>
+    {% if obj.image %}
+    <div>
+        <img src="{{obj.image.url}}" alt="" class="img-style">
+    </div>
+    {% endif %}
+    {% if not obj|check_review_exist %}
+    <div class="t-right">
+        <a href="{% url 'reviews_tickets:review-to-ticket-create' ticket_id=obj.id %}" class="btn btn-outline-success">
+            Create a review
+        </a>
+    </div>
+    {% endif %}
+</div>
