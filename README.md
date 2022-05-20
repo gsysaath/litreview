@@ -32,7 +32,7 @@ Activons le:
 
     pip install -r requirements.txt
 
-## Et lancer le scrapping:
+## Et lancer le programme:
 
 - Pour Unix:
 
